@@ -24,8 +24,8 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-    public String admin() {
+    public String admin(Principal principal) {
         log.info("Call API /admin from admin");
-        return "Hello Admin";
+        return "Hello " + principal.getName();
     }
 }
