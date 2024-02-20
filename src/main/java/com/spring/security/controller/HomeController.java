@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 @Slf4j
 public class HomeController {
@@ -16,14 +18,14 @@ public class HomeController {
     }
 
     @GetMapping("/user")
-    public String user() {
-        log.info("Call API /hello from user");
-        return "Hello User";
+    public String user(Principal principal) {
+        log.info("Call API /user from user");
+        return "Hello " + principal.getName();
     }
 
     @GetMapping("/admin")
     public String admin() {
-        log.info("Call API /hello from admin");
+        log.info("Call API /admin from admin");
         return "Hello Admin";
     }
 }
